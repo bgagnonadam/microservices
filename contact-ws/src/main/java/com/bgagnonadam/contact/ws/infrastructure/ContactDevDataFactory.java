@@ -15,6 +15,7 @@ public class ContactDevDataFactory {
     jobs.setName("Steve Jobs");
     jobs.setAddress("California");
     jobs.setTelephoneNumber("514-999-0000");
+    jobs.setBirthday("February 24, 1955");
     contacts.add(jobs);
 
     Contact balmer = new Contact();
@@ -22,6 +23,7 @@ public class ContactDevDataFactory {
     balmer.setName("Steve Balmer");
     balmer.setAddress("Manitoba");
     balmer.setTelephoneNumber("781-888-1111");
+    balmer.setBirthday("March 24, 1956");
     contacts.add(balmer);
 
     Contact franklin = new Contact();
@@ -29,7 +31,7 @@ public class ContactDevDataFactory {
     franklin.setName("Benjamin Franklin");
     franklin.setAddress("Washington");
     franklin.setTelephoneNumber("964-543-6475");
-    franklin.setBirthday("");
+    franklin.setBirthday("January 17, 1706");
     contacts.add(franklin);
 
     return contacts;

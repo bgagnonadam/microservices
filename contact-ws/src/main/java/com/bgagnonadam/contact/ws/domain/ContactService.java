@@ -47,7 +47,7 @@ public class ContactService {
   }
 
 
-  public void deleteContact(String id) {
+  public void deleteContact(String id) throws ContactNotFoundException {
     logger.info(String.format("Delete contact with id %s", id));
     contactRepository.remove(id);
   }

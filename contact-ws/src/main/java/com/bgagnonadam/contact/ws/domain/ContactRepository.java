@@ -12,5 +12,5 @@ public interface ContactRepository {
 
   void save(Contact contact);
 
-  void remove(String id);
+  void remove(String id) throws ContactNotFoundException;
 }

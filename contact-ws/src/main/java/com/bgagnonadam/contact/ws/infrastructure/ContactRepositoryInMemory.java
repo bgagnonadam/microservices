@@ -41,7 +41,10 @@ public class ContactRepositoryInMemory implements ContactRepository {
   }
 
   @Override
-  public void remove(String id) {
+  public void remove(String id) throws ContactNotFoundException {
+    if(!contacts.containsKey(id)){
+      throw new ContactNotFoundException("Contact not found, cannot be deleted");
+    }
     contacts.remove(id);
   }
 }

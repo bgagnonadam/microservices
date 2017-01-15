@@ -2,7 +2,7 @@ package com.bgagnonadam.telephony.ws.domain.contact;
 
 import java.util.List;
 
-public interface ContactRepository {
+public interface ContactClient {
   List<Contact> findAll();
 
   Contact findById(String id);

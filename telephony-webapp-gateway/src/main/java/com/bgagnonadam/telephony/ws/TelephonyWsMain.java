@@ -22,11 +22,11 @@ import com.bgagnonadam.telephony.ws.domain.calllog.CallLogAssembler;
 import com.bgagnonadam.telephony.ws.domain.calllog.CallLogClient;
 import com.bgagnonadam.telephony.ws.domain.calllog.CallLogService;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactAssembler;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactRepository;
+import com.bgagnonadam.telephony.ws.domain.contact.ContactClient;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactService;
 import com.bgagnonadam.telephony.ws.http.CORSResponseFilter;
 import com.bgagnonadam.telephony.ws.infrastructure.calllog.CallLogRestClient;
-import com.bgagnonadam.telephony.ws.infrastructure.contact.ContactRepositoryInMemory;
+import com.bgagnonadam.telephony.ws.infrastructure.contact.ContactRestClient;
 
 /**
  * RESTApi setup without using DI or spring
@@ -83,7 +83,7 @@ public static boolean isDev = true; // Would be a JVM argument or in a .property
 
   private static ContactResource createContactResource() {
     // Setup resources' dependencies (DOMAIN + INFRASTRUCTURE)
-    ContactRepository contactRepository = new ContactRepositoryInMemory();
+    ContactClient contactRepository = new ContactRestClient();
 
     ContactAssembler contactAssembler = new ContactAssembler();
     ContactService contactService = new ContactService(contactRepository, contactAssembler);

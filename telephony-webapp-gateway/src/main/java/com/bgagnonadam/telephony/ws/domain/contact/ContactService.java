@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 public class ContactService {
   private Logger logger = Logger.getLogger(ContactService.class.getName());
 
-  private ContactRepository contactRepository;
+  private ContactClient contactRepository;
   private ContactAssembler contactAssembler;
 
-  public ContactService(ContactRepository contactRepository, ContactAssembler contactAssembler) {
+  public ContactService(ContactClient contactRepository, ContactAssembler contactAssembler) {
     this.contactRepository = contactRepository;
     this.contactAssembler = contactAssembler;
   }

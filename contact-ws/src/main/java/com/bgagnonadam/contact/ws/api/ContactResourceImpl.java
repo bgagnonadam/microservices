@@ -46,6 +46,12 @@ public class ContactResourceImpl implements ContactResource {
 
   @Override
   public void deleteContact(String id) {
-    contactService.deleteContact(id);
+    try {
+      contactService.deleteContact(id);
+    } catch (ContactNotFoundException e) {
+      throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
+                                               .entity(e.getMessage())
+                                               .build());
+   }
   }
 }

@@ -1,19 +1,15 @@
 package com.bgagnonadam.telephony.ws.infrastructure.calllog;
 
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLog;
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLogClient;
-import jersey.repackaged.com.google.common.collect.Lists;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+
+import com.bgagnonadam.telephony.ws.domain.calllog.CallLog;
+import com.bgagnonadam.telephony.ws.domain.calllog.CallLogClient;
 
 public class CallLogRestClient implements CallLogClient {
   
