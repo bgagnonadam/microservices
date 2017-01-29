@@ -1,11 +1,12 @@
 package com.bgagnonadam.contact.ws.domain;
 
 public class Contact {
+  
   private String id;
   private String telephoneNumber;
   private String address;
   private String name;
-  private String birthday;
+  private String birthdate;
 
   public String getId() {
     return id;
@@ -40,10 +41,10 @@ public class Contact {
   }
 
   public String getBirthday(){
-     return birthday;
+     return birthdate;
   }
   
   public void setBirthday(String birthday) {
-     this.birthday = birthday; 
+     this.birthdate = birthday; 
   }
 }

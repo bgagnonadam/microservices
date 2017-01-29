@@ -33,7 +33,7 @@ import com.bgagnonadam.contact.ws.infrastructure.ContactRepositoryInMemory;
 public class ContactWsMain 
 {
    
-   private static final int WS_PORT = 8080; // HTTP port on which the web service is listening
+   private static final int WS_PORT = 8082; // HTTP port on which the web service is listening
     
    public static boolean isDev = true; // Would be a JVM argument or in a .property file
 
