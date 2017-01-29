@@ -33,7 +33,7 @@ import com.bgagnonadam.calllog.ws.infrastructure.CallLogRepositoryInMemory;
 public class CallLogWsMain 
 {
    
-   private static final int WS_PORT = 8082; // HTTP port on which the web service is listening
+   private static final int WS_PORT = 8081; // HTTP port on which the web service is listening
     
    public static boolean isDev = true; // Would be a JVM argument or in a .property file
 
