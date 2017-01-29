@@ -114,7 +114,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <mainClass>com.bgagnonadam.contact.ws.TelephonyWsMain</mainClass>
+                    <mainClass>com.bgagnonadam.telephony.ws.TelephonyWsMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>

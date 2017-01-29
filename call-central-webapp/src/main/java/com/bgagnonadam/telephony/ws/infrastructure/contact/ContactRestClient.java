@@ -1,5 +1,6 @@
 package com.bgagnonadam.telephony.ws.infrastructure.contact;
 
+import com.bgagnonadam.telephony.ws.domain.calllog.CallLog;
 import com.bgagnonadam.telephony.ws.domain.contact.Contact;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactNotFoundException;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactClient;
@@ -9,36 +10,47 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 
 public class ContactRestClient implements ContactClient {
 
   private WebTarget contactWs;
 
+  public ContactRestClient() {
+    Client client = ClientBuilder.newClient();
+    contactWs = client.target("http://localhost:8082/api").path("contacts");
+  }
   @Override
   public List<Contact> findAll() {
-    // TODO should use the contactWs to fetch all contacts
-    return Lists.newArrayList();
+    return contactWs.request(MediaType.APPLICATION_JSON).get(new GenericType<List<Contact>>(){});
   }
 
   @Override
   public Contact findById(String id) {
-    // TODO should use the contactWs to find the contact with ID
-    return new Contact();
+    return contactWs.path(id).request(MediaType.APPLICATION_JSON).get(new GenericType<Contact>(){});
   }
 
   @Override
   public void update(Contact contact) throws ContactNotFoundException {
-    // TODO should use the contactWs to update this contact
+    Entity<Contact> entity = Entity.entity(contact, MediaType.APPLICATION_JSON_TYPE);
+    
+    contactWs.path(contact.getId()).request().put(entity);
   }
 
   @Override
   public void save(Contact contact) {
-    // TODO should use the contactWs to create contact
+    Entity<Contact> entity = Entity.entity(contact, MediaType.APPLICATION_JSON_TYPE);
+    
+    contactWs.request().post(entity); 
   }
 
   @Override
   public void remove(String id) {
-    // TODO should use the contactWs to remove contact
+    contactWs.path(id).request().delete();
   }
 }

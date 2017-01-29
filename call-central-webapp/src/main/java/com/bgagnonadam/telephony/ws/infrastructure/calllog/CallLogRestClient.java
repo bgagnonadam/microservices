@@ -17,7 +17,7 @@ public class CallLogRestClient implements CallLogClient {
 
   public CallLogRestClient() {
     Client client = ClientBuilder.newClient();
-    this.callLogWs = client.target("http://localhost:8082/api").path("calllogs");
+    this.callLogWs = client.target("http://localhost:8081/api").path("calllogs");
   }
 
   @Override
