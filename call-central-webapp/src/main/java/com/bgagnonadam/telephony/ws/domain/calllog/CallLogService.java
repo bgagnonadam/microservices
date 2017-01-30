@@ -23,7 +23,7 @@ public class CallLogService {
     return callLogs.stream().map(callLogAssembler::create).collect(Collectors.toList());
   }
 
-  public void deleteCallLog(String id) {
+  public void deleteCallLog(String id) throws UnableToRemoveCallLogException {
     logger.info(String.format("Delete call log with id %s", id));
     callLogClient.remove(id);
   }

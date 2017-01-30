@@ -1,7 +1,7 @@
 package com.bgagnonadam.telephony.ws.api.calllog;
 
-
 import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
+import com.bgagnonadam.telephony.ws.domain.calllog.UnableToRemoveCallLogException;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,5 +20,5 @@ public interface CallLogResource {
 
   @DELETE
   @Path("{id}")
-  void deleteCallLog(@PathParam("id") String id);
+  void deleteCallLog(@PathParam("id") String id) throws UnableToRemoveCallLogException;
 }

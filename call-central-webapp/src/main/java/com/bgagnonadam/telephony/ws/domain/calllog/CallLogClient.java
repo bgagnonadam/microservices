@@ -6,5 +6,5 @@ public interface CallLogClient {
 
   List<CallLog> findAll();
 
-  void remove(String id);
+  void remove(String id) throws UnableToRemoveCallLogException;
 }

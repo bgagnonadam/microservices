@@ -2,6 +2,7 @@ package com.bgagnonadam.telephony.ws.api.calllog;
 
 import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
 import com.bgagnonadam.telephony.ws.domain.calllog.CallLogService;
+import com.bgagnonadam.telephony.ws.domain.calllog.UnableToRemoveCallLogException;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class CallLogResourceImpl implements CallLogResource {
   }
 
   @Override
-  public void deleteCallLog(String id) {
+  public void deleteCallLog(String id) throws UnableToRemoveCallLogException {
     callLogService.deleteCallLog(id);
   }
 }

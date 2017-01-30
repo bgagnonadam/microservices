@@ -25,6 +25,7 @@ import com.bgagnonadam.telephony.ws.domain.contact.ContactAssembler;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactClient;
 import com.bgagnonadam.telephony.ws.domain.contact.ContactService;
 import com.bgagnonadam.telephony.ws.http.CORSResponseFilter;
+import com.bgagnonadam.telephony.ws.http.UnableToRemoveCallLogExceptionMapper;
 import com.bgagnonadam.telephony.ws.infrastructure.calllog.CallLogRestClient;
 import com.bgagnonadam.telephony.ws.infrastructure.contact.ContactRestClient;
 
@@ -42,6 +43,7 @@ public static boolean isDev = true; // Would be a JVM argument or in a .property
     // Setup resources (API)
     ContactResource contactResource = createContactResource();
     CallLogResource callLogResource = createCallLogResource();
+    
 
     // Setup API context (JERSEY + JETTY)
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -53,11 +55,13 @@ public static boolean isDev = true; // Would be a JVM argument or in a .property
         // Add resources to context
         resources.add(contactResource);
         resources.add(callLogResource);
+        resources.add(new UnableToRemoveCallLogExceptionMapper());
         return resources;
       }
+      
     });
     resourceConfig.register(CORSResponseFilter.class);
-
+    
     ServletContainer servletContainer = new ServletContainer(resourceConfig);
     ServletHolder servletHolder = new ServletHolder(servletContainer);
     context.addServlet(servletHolder, "/*");
