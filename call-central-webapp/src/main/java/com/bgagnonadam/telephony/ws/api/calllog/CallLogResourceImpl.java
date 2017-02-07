@@ -1,26 +1,25 @@
 package com.bgagnonadam.telephony.ws.api.calllog;
 
-import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLogService;
-import com.bgagnonadam.telephony.ws.domain.calllog.UnableToRemoveCallLogException;
-
 import java.util.List;
+
+import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
+import com.bgagnonadam.telephony.ws.client.CallLogApi;
 
 public class CallLogResourceImpl implements CallLogResource {
 
-  private CallLogService callLogService;
+  private CallLogApi callLogApi;
 
-  public CallLogResourceImpl(CallLogService callLogService) {
-    this.callLogService = callLogService;
+  public CallLogResourceImpl(CallLogApi callLogApi) {
+    this.callLogApi = callLogApi;
   }
 
   @Override
   public List<CallLogDto> getCallLogs() {
-    return callLogService.findAllCallLogs();
+    return callLogApi.findAll();
   }
 
   @Override
-  public void deleteCallLog(String id) throws UnableToRemoveCallLogException {
-    callLogService.deleteCallLog(id);
+  public void deleteCallLog(String id) {
+    callLogApi.remove(id);
   }
 }

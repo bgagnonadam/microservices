@@ -1,4 +1,4 @@
-package com.bgagnonadam.telephony.ws.domain.contact;
+package com.bgagnonadam.contact.ws.domain;
 
 
 public class UnableToUpdateContactException extends Exception {

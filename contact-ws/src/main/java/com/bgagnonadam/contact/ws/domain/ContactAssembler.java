@@ -9,7 +9,7 @@ public class ContactAssembler {
     contact.setAddress(contactDto.address);
     contact.setTelephoneNumber(contactDto.telephoneNumber);
     contact.setName(contactDto.name);
-    contact.setBirthday(contactDto.birthday);
+    contact.setBirthday(contactDto.birthdate);
     
     return contact;
   }
@@ -21,7 +21,7 @@ public class ContactAssembler {
     contactDto.telephoneNumber = contact.getTelephoneNumber();
     contactDto.name = contact.getName();
     contactDto.id = contact.getId();
-    contactDto.birthday = contact.getBirthday();
+    contactDto.birthdate = contact.getBirthday();
     
     return contactDto;
   }
