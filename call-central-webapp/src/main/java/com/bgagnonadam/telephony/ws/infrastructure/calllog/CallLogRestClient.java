@@ -1,16 +1,13 @@
 package com.bgagnonadam.telephony.ws.infrastructure.calllog;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
-import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
 import com.bgagnonadam.telephony.ws.client.CallLogApi;
 
 public class CallLogRestClient implements CallLogApi {
@@ -23,12 +20,11 @@ public class CallLogRestClient implements CallLogApi {
   }
 
   @Override
-  public List<CallLogDto> findAll() {
+  public Response findAll() {
     try {
-      return callLogWs.request(MediaType.APPLICATION_JSON).get(new GenericType<List<CallLogDto>>() {
-      });
+      return callLogWs.request(MediaType.APPLICATION_JSON).get();
     } catch (ProcessingException exception) {
-      return new ArrayList<>();
+      return Response.status(Status.BAD_REQUEST).build();
     }
   }
 

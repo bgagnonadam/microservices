@@ -2,7 +2,8 @@ package com.bgagnonadam.calllog.ws.domain;
 
 public class CallLog {
   private String id;
-  private String telephoneNumber;
+  private String callerId;
+  private Contact caller;
   private String date;
   private int durationInSeconds;
 
@@ -15,12 +16,12 @@ public class CallLog {
     this.id = id;
   }
 
-  public String getTelephoneNumber() {
-    return telephoneNumber;
+  public Contact getCaller() {
+    return caller;
   }
 
-  public void setTelephoneNumber(String telephoneNumber) {
-    this.telephoneNumber = telephoneNumber;
+  public void setCaller(Contact caller) {
+    this.caller= caller;
   }
 
   public String getDate() {
@@ -37,5 +38,13 @@ public class CallLog {
 
   public void setDurationInSeconds(int durationInSeconds) {
     this.durationInSeconds = durationInSeconds;
+  }
+
+  public String getCallerId() {
+    return callerId;
+  }
+
+  public void setCallerId(String callerId) {
+    this.callerId = callerId;
   }
 }

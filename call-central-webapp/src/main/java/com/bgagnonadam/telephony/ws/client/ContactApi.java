@@ -1,14 +1,14 @@
 package com.bgagnonadam.telephony.ws.client;
 
-import java.util.List;
+import javax.ws.rs.core.Response;
 
 import com.bgagnonadam.telephony.ws.api.contact.dto.ContactDto;
 
 public interface ContactApi {
 
-  List<ContactDto> findAll();
+  Response findAll();
 
-  ContactDto findById(String id);
+  Response findById(String id);
 
   void save(ContactDto contact);
 

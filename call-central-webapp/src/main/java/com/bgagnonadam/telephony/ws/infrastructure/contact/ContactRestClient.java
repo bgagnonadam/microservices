@@ -3,6 +3,7 @@ package com.bgagnonadam.telephony.ws.infrastructure.contact;
 import java.util.List;
 
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
 
 import com.bgagnonadam.telephony.ws.api.contact.dto.ContactDto;
 import com.bgagnonadam.telephony.ws.client.ContactApi;
@@ -18,15 +19,15 @@ public class ContactRestClient implements ContactApi{
   }
 
   @Override
-  public List<ContactDto> findAll() {
+  public Response findAll() {
     // TODO should use the contactWs to fetch all contacts
-    return Lists.newArrayList();
+    return Response.ok().build();
   }
 
   @Override
-  public ContactDto findById(String id) {
+  public Response findById(String id) {
     // TODO should use the contactWs to find the contact with ID
-    return new ContactDto();
+    return Response.ok().build();
   }
 
   @Override

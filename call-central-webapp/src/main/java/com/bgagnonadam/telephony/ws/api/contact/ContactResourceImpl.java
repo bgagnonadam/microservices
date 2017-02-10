@@ -1,6 +1,6 @@
 package com.bgagnonadam.telephony.ws.api.contact;
 
-import java.util.List;
+import javax.ws.rs.core.Response;
 
 import com.bgagnonadam.telephony.ws.api.contact.dto.ContactDto;
 import com.bgagnonadam.telephony.ws.client.ContactApi;
@@ -14,12 +14,12 @@ public class ContactResourceImpl implements ContactResource {
   }
 
   @Override
-  public List<ContactDto> getContacts() {
+  public Response getContacts() {
     return contactApi.findAll();
   }
 
   @Override
-  public ContactDto getContact(String id) {
+  public Response getContact(String id) {
     return contactApi.findById(id);
   }
 

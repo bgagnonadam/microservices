@@ -1,8 +1,7 @@
 package com.bgagnonadam.telephony.ws.api.calllog;
 
-import java.util.List;
+import javax.ws.rs.core.Response;
 
-import com.bgagnonadam.telephony.ws.api.calllog.dto.CallLogDto;
 import com.bgagnonadam.telephony.ws.client.CallLogApi;
 
 public class CallLogResourceImpl implements CallLogResource {
@@ -14,7 +13,7 @@ public class CallLogResourceImpl implements CallLogResource {
   }
 
   @Override
-  public List<CallLogDto> getCallLogs() {
+  public Response getCallLogs() {
     return callLogApi.findAll();
   }
 
