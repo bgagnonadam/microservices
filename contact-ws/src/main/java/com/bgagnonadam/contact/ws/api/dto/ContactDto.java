@@ -5,7 +5,7 @@ public class ContactDto {
   public String telephoneNumber;
   public String address;
   public String name;
-  public String birthday;
+  public String birthdate;
 
   @Override
   public String toString() {
@@ -14,7 +14,7 @@ public class ContactDto {
             ", telephoneNumber='" + telephoneNumber + '\'' +
             ", address='" + address + '\'' +
             ", name='" + name + '\'' +
-            ", birthday='" + birthday + '\'' +
+            ", birthdate='" + birthdate + '\'' +
             '}';
   }
 }

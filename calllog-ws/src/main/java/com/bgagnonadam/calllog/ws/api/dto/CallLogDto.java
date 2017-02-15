@@ -5,4 +5,5 @@ public class CallLogDto {
   public String telephoneNumber;
   public String date;
   public int durationInSeconds;
+  public ContactDto caller; 
 }

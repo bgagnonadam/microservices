@@ -18,24 +18,29 @@ import com.bgagnonadam.telephony.ws.api.calllog.CallLogResource;
 import com.bgagnonadam.telephony.ws.api.calllog.CallLogResourceImpl;
 import com.bgagnonadam.telephony.ws.api.contact.ContactResource;
 import com.bgagnonadam.telephony.ws.api.contact.ContactResourceImpl;
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLogAssembler;
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLogClient;
-import com.bgagnonadam.telephony.ws.domain.calllog.CallLogService;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactAssembler;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactClient;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactService;
+import com.bgagnonadam.telephony.ws.client.CallLogApi;
+import com.bgagnonadam.telephony.ws.client.ContactApi;
 import com.bgagnonadam.telephony.ws.http.CORSResponseFilter;
-import com.bgagnonadam.telephony.ws.http.UnableToRemoveCallLogExceptionMapper;
 import com.bgagnonadam.telephony.ws.infrastructure.calllog.CallLogRestClient;
 import com.bgagnonadam.telephony.ws.infrastructure.contact.ContactRestClient;
 
 /**
- * RESTApi setup without using DI or spring
+ * RESTApi responsible for the api gateway.
+ * Normally, this is not done using Java. You'll use a reverse proxy with a subscribing functionality.
+ * So your service says which kind of request they are able to respond to and at which address  
+ * 
  */
 @SuppressWarnings("all")
 public class TelephonyWsMain {
+  // would be found in a .property file.  
+  private static final String CALLLOG_WEB_SERVICE_URL = "http://localhost:8081/api";
+
+  private static final String CONTACT_WEB_SERVICE_URL = "http://localhost:8082/api";
+  
   private static final int HTTP_PORT = 8080;
-public static boolean isDev = true; // Would be a JVM argument or in a .property file
+
+
+  public static boolean isDev = true; // Would be a JVM argument or in a .property file
 
   public static void main(String[] args)
           throws Exception {
@@ -55,7 +60,6 @@ public static boolean isDev = true; // Would be a JVM argument or in a .property
         // Add resources to context
         resources.add(contactResource);
         resources.add(callLogResource);
-        resources.add(new UnableToRemoveCallLogExceptionMapper());
         return resources;
       }
       
@@ -87,21 +91,16 @@ public static boolean isDev = true; // Would be a JVM argument or in a .property
 
   private static ContactResource createContactResource() {
     // Setup resources' dependencies (DOMAIN + INFRASTRUCTURE)
-    ContactClient contactRepository = new ContactRestClient();
+    ContactApi contactApi = new ContactRestClient(CONTACT_WEB_SERVICE_URL);
 
-    ContactAssembler contactAssembler = new ContactAssembler();
-    ContactService contactService = new ContactService(contactRepository, contactAssembler);
-
-    return new ContactResourceImpl(contactService);
+    return new ContactResourceImpl(contactApi); 
   }
 
   private static CallLogResource createCallLogResource() {
-    // Setup resources' dependencies (DOMAIN + INFRASTRUCTURE)
-    CallLogClient callLogClient = new CallLogRestClient();
-    
-    CallLogAssembler callLogAssembler = new CallLogAssembler();
-    CallLogService callLogService = new CallLogService(callLogClient, callLogAssembler);
+    // Setup resources Gateway dependencies
 
-    return new CallLogResourceImpl(callLogService);
+    CallLogApi callLogApi = new CallLogRestClient(CALLLOG_WEB_SERVICE_URL);
+
+    return new CallLogResourceImpl(callLogApi);
   }
 }

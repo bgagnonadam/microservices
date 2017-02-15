@@ -1,11 +1,11 @@
-package com.bgagnonadam.telephony.ws.http;
+package com.bgagnonadam.calllog.ws.http;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import com.bgagnonadam.telephony.ws.domain.calllog.UnableToRemoveCallLogException;
+import com.bgagnonadam.calllog.ws.domain.UnableToRemoveCallLogException;
 
 
 @Provider

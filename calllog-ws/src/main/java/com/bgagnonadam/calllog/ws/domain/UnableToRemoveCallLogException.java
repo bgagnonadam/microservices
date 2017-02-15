@@ -1,4 +1,4 @@
-package com.bgagnonadam.telephony.ws.domain.calllog;
+package com.bgagnonadam.calllog.ws.domain;
 
 
 public class UnableToRemoveCallLogException extends Exception {

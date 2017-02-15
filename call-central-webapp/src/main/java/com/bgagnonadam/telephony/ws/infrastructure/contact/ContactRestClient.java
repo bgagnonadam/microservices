@@ -1,39 +1,42 @@
 package com.bgagnonadam.telephony.ws.infrastructure.contact;
 
-import com.bgagnonadam.telephony.ws.domain.contact.Contact;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactNotFoundException;
-import com.bgagnonadam.telephony.ws.domain.contact.ContactClient;
-import jersey.repackaged.com.google.common.collect.Lists;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
 
-public class ContactRestClient implements ContactClient {
+import com.bgagnonadam.telephony.ws.api.contact.dto.ContactDto;
+import com.bgagnonadam.telephony.ws.client.ContactApi;
+
+import jersey.repackaged.com.google.common.collect.Lists;
+
+public class ContactRestClient implements ContactApi{
 
   private WebTarget contactWs;
 
+  public ContactRestClient(String contactWebServiceUrl) {
+    // TODO Auto-generated constructor stub
+  }
+
   @Override
-  public List<Contact> findAll() {
+  public Response findAll() {
     // TODO should use the contactWs to fetch all contacts
-    return Lists.newArrayList();
+    return Response.ok().build();
   }
 
   @Override
-  public Contact findById(String id) {
+  public Response findById(String id) {
     // TODO should use the contactWs to find the contact with ID
-    return new Contact();
+    return Response.ok().build();
   }
 
   @Override
-  public void update(Contact contact) throws ContactNotFoundException {
+  public void update(ContactDto contact) {
     // TODO should use the contactWs to update this contact
   }
 
   @Override
-  public void save(Contact contact) {
+  public void save(ContactDto contact) {
     // TODO should use the contactWs to create contact
   }
 
