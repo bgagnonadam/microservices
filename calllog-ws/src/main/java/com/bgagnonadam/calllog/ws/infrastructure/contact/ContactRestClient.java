@@ -1,12 +1,12 @@
-package com.bgagnonadam.calllog.ws.infrastructure;
+package com.bgagnonadam.calllog.ws.infrastructure.contact;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-import com.bgagnonadam.calllog.ws.domain.Contact;
-import com.bgagnonadam.calllog.ws.domain.ContactRepository;
+import com.bgagnonadam.calllog.ws.domain.contact.Contact;
+import com.bgagnonadam.calllog.ws.domain.contact.ContactRepository;
 
 public class ContactRestClient implements ContactRepository {
 

@@ -1,6 +1,7 @@
 package com.bgagnonadam.calllog.ws.domain;
 
 import com.bgagnonadam.calllog.ws.api.dto.CallLogDto;
+import com.bgagnonadam.calllog.ws.domain.contact.ContactAssembler;
 
 import groovy.transform.Undefined.CLASS;
 

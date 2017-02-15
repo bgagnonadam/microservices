@@ -1,5 +1,7 @@
 package com.bgagnonadam.calllog.ws.domain;
 
+import com.bgagnonadam.calllog.ws.domain.contact.Contact;
+
 public class CallLog {
   private String id;
   private String callerId;

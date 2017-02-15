@@ -1,4 +1,4 @@
-package com.bgagnonadam.calllog.ws.domain;
+package com.bgagnonadam.calllog.ws.domain.contact;
 
 import com.bgagnonadam.calllog.ws.api.dto.ContactDto;
 

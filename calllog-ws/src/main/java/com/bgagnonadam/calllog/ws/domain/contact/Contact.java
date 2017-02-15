@@ -1,4 +1,4 @@
-package com.bgagnonadam.calllog.ws.domain;
+package com.bgagnonadam.calllog.ws.domain.contact;
 
 
 public class Contact {

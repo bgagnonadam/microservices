@@ -21,10 +21,10 @@ import com.bgagnonadam.calllog.ws.domain.CallLog;
 import com.bgagnonadam.calllog.ws.domain.CallLogAssembler;
 import com.bgagnonadam.calllog.ws.domain.CallLogRepository;
 import com.bgagnonadam.calllog.ws.domain.CallLogService;
-import com.bgagnonadam.calllog.ws.domain.ContactRepository;
+import com.bgagnonadam.calllog.ws.domain.contact.ContactRepository;
 import com.bgagnonadam.calllog.ws.infrastructure.CallLogDevDataFactory;
 import com.bgagnonadam.calllog.ws.infrastructure.CallLogRepositoryInMemory;
-import com.bgagnonadam.calllog.ws.infrastructure.ContactRestClient;
+import com.bgagnonadam.calllog.ws.infrastructure.contact.ContactRestClient;
 
 
 /**
@@ -37,7 +37,7 @@ public class CallLogWsMain
    
    private static final int WS_PORT = 8081; // HTTP port on which the web service is listening
 
-  private static final String CONTACT_WS_URL = "http://127.0.0.1:8082/api/"; // URL of the gateway web app
+  private static final String CONTACT_WS_URL = "http://127.0.0.1:8080/api/"; // URL of the gateway web app
     
    public static boolean isDev = true; // Would be a JVM argument or in a .property file
 
